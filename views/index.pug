@@ -1,0 +1,108 @@
+extends layout
+
+block content
+  .contenedorHeader 
+    h3 Administrador de Medicos
+  .contenedorInputs
+    form(method="POST")
+      input(type="text" placeholder='NombreMedico' name='Nombre')
+      input(type="text" placeholder='Especialidad del medico' name='Especialidad')
+      input(type="text" placeholder='#Años ejerciendo' name='anios')
+      input(type="submit" value="guardar")
+  #contenedor3
+    h3 ID
+    h3 Nombre
+    h3 Especialidad
+    h3 Años Ejerciendo
+    h3 Eliminar
+    h3 Actualizar
+  #contenedor2
+      script.
+        function generar_tabla(){
+          var body = document.getElementById("contenedor2");
+          var tabla = document.createElement("table");
+          var tblbody = document.createElement("tbody");
+          var rows = JSON.parse('#{FilasBD}'.replace(/&quot;/g,'"'));
+          var textoCelda;
+          for(var i=0; i < rows.length; i++){
+            var fila = document.createElement('tr');
+            
+            for(var j = 0; j<6;j++){
+              var celda = document.createElement("td");
+              if(j==0){
+                textoCelda = document.createTextNode(rows[i]._id);
+                celda.appendChild(textoCelda);
+                celda.style.width= "7%";
+                fila.appendChild(celda);
+              }
+              if(j==1){
+                textoCelda = document.createTextNode(rows[i].Nombre);
+                celda.style.width= "10%";
+                celda.appendChild(textoCelda);
+                fila.appendChild(celda);
+              }
+              if(j==2){
+                textoCelda = document.createTextNode(rows[i].Especialidad);
+                celda.style.width= "25%";
+                celda.appendChild(textoCelda);
+                fila.appendChild(celda);
+              }
+              if(j==3){
+                textoCelda = document.createTextNode(rows[i].Anios);
+                celda.style.width= "15%";
+                celda.appendChild(textoCelda);
+                fila.appendChild(celda);
+              }
+              if(j == 4){
+                var a = document.createElement('a');
+                a.href='/eliminar/'+rows[i]._id;
+                var eliminar = document.createElement('img');
+                eliminar.src = '../images/minus.png';
+                eliminar.style.height ="4em";
+
+                a.appendChild(eliminar);
+                celda.appendChild(a);
+                celda.style.width= "22%";
+                
+                fila.appendChild(celda);
+              
+              }
+              if(j==5){
+                var a = document.createElement('a');
+
+                a.href='/Actualizar/'+rows[i]._id;
+                var update = document.createElement('img');
+                update.src = '../images/Modify.png';
+                update.style.height ="4em";
+                a.appendChild(update);
+                celda.appendChild(a);
+                celda.style.width= "15%";
+                fila.appendChild(celda);
+
+
+              }
+              
+              
+              
+              
+
+            }
+            
+            tblbody.appendChild(fila);
+            
+            
+          }
+        
+          tabla.appendChild(tblbody);
+          
+          tabla.style.borderTop ="1px solid lightgray";
+          tabla.style.borderBottom="1px solid lightgray";
+          tabla.style.paddingTop = "2em";
+          tabla.style.paddingBottom = "2em";
+        
+          tabla.style.width="100%";
+          tabla.style.textAlign="center";
+            body.appendChild(tabla);
+        }
+        generar_tabla();
+

@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.contenedorInputs{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;;
+  align-items: center;
+  background-color: lightgray;
+  padding-top: 3.5em;
+  padding-bottom: 3.5em;
+}
+.contenedorInputs input{
+  height: 3em;
+  
+  margin-left: 4em;
+  padding-left: 1em;
+}
+.contenedorInputs input[type="submit"]{
+  background-color: rgb(71, 216, 71);
+  color:white;
+  border: none;
+  border-radius: 5px;
+  width: 10em;
+
+}
+#contenedor3{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: lightblue;
+
+}
+.contenedorHeader{
+  margin: 0;
+  padding: 0;
+  background-color: lightyellow;
+}
+.contenedorHeader h3{
+  margin: 0;
+  padding:2em;
+}
