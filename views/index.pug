@@ -55,7 +55,7 @@ block content
               }
               if(j == 4){
                 var a = document.createElement('a');
-                a.href='/eliminar/'+rows[i]._id;
+                a.href='/api/Medicos/eliminar/'+rows[i]._id;
                 var eliminar = document.createElement('img');
                 eliminar.src = '../images/minus.png';
                 eliminar.style.height ="4em";
@@ -70,7 +70,7 @@ block content
               if(j==5){
                 var a = document.createElement('a');
 
-                a.href='/Actualizar/'+rows[i]._id;
+                a.href='/api/Medicos/Actualizar/'+rows[i]._id;
                 var update = document.createElement('img');
                 update.src = '../images/Modify.png';
                 update.style.height ="4em";
